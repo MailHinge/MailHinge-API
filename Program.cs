@@ -1,3 +1,6 @@
+using MailHinge_API.Interfaces;
+using MailHinge_API.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +9,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//Used to register the servie in main program cs config
+builder.Services.AddTransient<IOutlookService, OutlookService>();
 
 var app = builder.Build();
 
