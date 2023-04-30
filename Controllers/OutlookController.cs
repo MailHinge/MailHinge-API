@@ -22,9 +22,17 @@ namespace MailHinge_API.Controllers
 		}
 
         [HttpGet("getEmail")]
-        public string GetEmail()
+        public async Task<string> GetEmail()
         {
-            return "Wojtek";
+            var result = _outlookService.GetGraphServiceClient();
+
+            string userEmail = "hafiirahman@outlook.com";
+
+            // Call the Graph API to find the user by email address
+            var user = await result.Me
+            .GetAsync();
+
+            return "success";
         }
 
 
