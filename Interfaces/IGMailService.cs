@@ -3,7 +3,7 @@ using Google.Apis.Gmail.v1;
 
 namespace MailHinge_API.Interfaces
 {
-	public interface IGmailService
+	public interface IGMailService
 	{
 		public Task<GmailService> GetGmailServiceClient();
 	}
