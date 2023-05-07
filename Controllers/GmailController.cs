@@ -18,9 +18,11 @@ namespace MailHinge_API.Controllers
 		}
 
         [HttpGet("getEmail")]
-		public string GetEmail()
+		public async Task<string> GetEmail()
 		{
-			var serviceResult = _IGMailService.GetGmailServiceClient();
+			var serviceResult = await _IGMailService.GetGmailServiceClient();
+
+
 			
 
 			return "success";

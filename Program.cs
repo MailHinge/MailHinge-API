@@ -10,8 +10,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//Used to register the servie in main program cs config
+//Used to register the service in main program cs config
 builder.Services.AddTransient<IOutlookService, OutlookService>();
+builder.Services.AddTransient<IGMailService, GMailService>();
 
 var app = builder.Build();
 
