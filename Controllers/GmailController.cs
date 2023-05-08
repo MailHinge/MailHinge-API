@@ -3,6 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using MailHinge_API.Interfaces;
 using Google.Apis.Gmail.v1;
 
+using Google.Apis.Auth.AspNetCore3;
+using Google.Apis.Auth.OAuth2;
+using Google.Apis.Services;
+
 namespace MailHinge_API.Controllers
 {
     [ApiController]
@@ -18,14 +22,18 @@ namespace MailHinge_API.Controllers
 		}
 
         [HttpGet("getEmail")]
-		public async Task<string> GetEmail()
+        [GoogleScopedAuthorize(GmailService.ScopeConstants.GmailReadonly)]
+
+        public async Task<string> GetEmail([FromServices] IGoogleAuthProvider auth)
 		{
-			var serviceResult = await _IGMailService.GetGmailServiceClient();
+            GoogleCredential cred = await auth.GetCredentialAsync();
+            var service = new GmailService(new BaseClientService.Initializer
+            {
+                HttpClientInitializer = cred
+            });
 
 
-			
-
-			return "success";
+            return "success";
 		}
 
 
