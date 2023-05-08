@@ -5,7 +5,7 @@ namespace MailHinge_API.Interfaces
 {
 	public interface IGMailService
 	{
-		public Task<GmailService> GetGmailServiceClient();
+		public GmailService GetGmailServiceClient();
 	}
 }
 

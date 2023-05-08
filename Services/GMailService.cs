@@ -16,23 +16,6 @@ namespace MailHinge_API.Services
         {
         }
 
-        public async Task<GmailService> GetGmailServiceClient()
-        {
-            // Create a new Gmail API client with your credentials
-            var credential = await GoogleWebAuthorizationBroker.AuthorizeAsync(
-                new ClientSecrets { ClientId = clientID,
-                    ClientSecret = clientSecret
-                },
-                new[] { GmailService.Scope.GmailReadonly },
-                "user",
-                CancellationToken.None);
-
-            GmailService _gmailService = new GmailService(new BaseClientService.Initializer()
-            {
-                HttpClientInitializer = credential,
-                ApplicationName = "MailHinge"
-            });
-
             return _gmailService;
 
         }

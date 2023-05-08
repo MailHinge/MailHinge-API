@@ -12,6 +12,7 @@
     <PackageReference Include="Microsoft.Graph" Version="5.9.0" />
     <PackageReference Include="Azure.Identity" Version="1.8.2" />
     <PackageReference Include="Google.Apis.Gmail.v1" Version="1.60.0.3035" />
+    <PackageReference Include="Google.Apis.Auth.AspNetCore3" Version="1.60.0" />
   </ItemGroup>
 
   <ItemGroup>
