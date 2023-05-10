@@ -14,12 +14,13 @@ namespace MailHinge_API.Controllers
 
     public class GmailController : ControllerBase
 	{
-		private readonly IGMailService _IGMailService;
+		//private readonly IGMailService _IGMailService;
 
+        /*
 		public GmailController(IGMailService gmailService)
 		{
 			_IGMailService = gmailService;
-		}
+		} */
 
         [HttpGet("getEmail")]
         [GoogleScopedAuthorize(GmailService.ScopeConstants.GmailReadonly)]

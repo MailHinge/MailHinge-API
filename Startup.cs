@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Google.Apis.Auth.AspNetCore3;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Swashbuckle.AspNetCore;
+using Microsoft.OpenApi.Models;
 
 namespace MailHinge_API
 {
@@ -41,6 +43,7 @@ namespace MailHinge_API
                     options.ClientId = clientID;
                     options.ClientSecret = clientSecret;
                 });
+                
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
