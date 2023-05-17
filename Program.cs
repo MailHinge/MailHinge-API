@@ -12,7 +12,7 @@ builder.Services.AddSwaggerGen();
 
 //Used to register the service in main program cs config
 builder.Services.AddTransient<IOutlookService, OutlookService>();
-builder.Services.AddTransient<IGMailService, GMailService>();
+//builder.Services.AddTransient<IGMailService, GMailService>();
 
 var app = builder.Build();
 
