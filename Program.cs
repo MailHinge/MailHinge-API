@@ -1,5 +1,6 @@
 using MailHinge_API.Interfaces;
 using MailHinge_API.Services;
+using Microsoft.Graph;
 
 var builder = WebApplication.CreateBuilder(args);
 

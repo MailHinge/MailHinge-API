@@ -6,6 +6,11 @@ using Google.Apis.Auth.AspNetCore3;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Swashbuckle.AspNetCore;
 using Microsoft.OpenApi.Models;
+using Microsoft.Identity.Web;
+using Microsoft.Identity.Web.UI;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.Graph.Models.ExternalConnectors;
+using Microsoft.Graph;
 
 namespace MailHinge_API
 {
@@ -15,35 +20,19 @@ namespace MailHinge_API
         private const string clientSecret = "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";
         private const string redirectURI = "http://localhost:7144/authorize";
 
-        public Startup()
-		{
+        private readonly IConfiguration _configuration;
 
+        public Startup(IConfiguration configuration)
+		{
+            _configuration = configuration;
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // Configure your services here
-            // This configures Google.Apis.Auth.AspNetCore3 for use in this app.
-            services
-                .AddAuthentication(o =>
-                {
-                    // This forces challenge results to be handled by Google OpenID Handler, so there's no
-                    // need to add an AccountController that emits challenges for Login.
-                    o.DefaultChallengeScheme = GoogleOpenIdConnectDefaults.AuthenticationScheme;
-                    // This forces forbid results to be handled by Google OpenID Handler, which checks if
-                    // extra scopes are required and does automatic incremental auth.
-                    o.DefaultForbidScheme = GoogleOpenIdConnectDefaults.AuthenticationScheme;
-                    // Default scheme that will handle everything else.
-                    // Once a user is authenticated, the OAuth2 token info is stored in cookies.
-                    o.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                })
-                .AddCookie()
-                .AddGoogleOpenIdConnect(options =>
-                {
-                    options.ClientId = clientID;
-                    options.ClientSecret = clientSecret;
-                });
-                
+
+            services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
+          .AddMicrosoftIdentityWebApp(_configuration.GetSection("AzureAd"));
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

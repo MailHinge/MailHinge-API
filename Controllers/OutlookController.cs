@@ -21,12 +21,13 @@ namespace MailHinge_API.Controllers
         [HttpGet("getEmail")]
         public async Task<string> GetEmail()
         {
-            var graphServiceClient = _outlookService.GetGraphServiceClient();
+            var _graphServiceClient = _outlookService.GetGraphServiceClient();
+            var result = await _graphServiceClient.Me.GetAsync();
 
-            var result = await graphServiceClient.Me.Messages.GetAsync((requestConfiguration) =>
+            /*var result = await _graphServiceClient.Me.Messages.GetAsync((requestConfiguration) =>
             {
                 requestConfiguration.QueryParameters.Select = new string[] { "sender", "subject" };
-            });
+            }); */
 
             return "success";
         }
