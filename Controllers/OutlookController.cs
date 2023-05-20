@@ -1,4 +1,10 @@
-﻿namespace MailHinge_API.Controllers
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Graph;
+using Azure.Identity;
+using MailHinge_API.Interfaces;
+
+namespace MailHinge_API.Controllers
 {
     [ApiController]
     [Route("outlook/")]
