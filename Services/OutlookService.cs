@@ -16,7 +16,7 @@ namespace MailHinge_API.Services
             var credentials = new DeviceCodeCredential(new DeviceCodeCredentialOptions
             {
                 ClientId = "4b496d0e-e0ad-4c65-a8ee-3f603b78635d",
-                TenantId = "f8cdef31-a31e-4b4a-93e4-5f571e91255a",
+                TenantId = "f8cdef31-a31e-4b4a-93e4-5f571e91255a", 
 
             });
 
