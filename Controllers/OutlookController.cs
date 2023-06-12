@@ -29,7 +29,7 @@ namespace MailHinge_API.Controllers
                 requestConfiguration.QueryParameters.Select = new string[] { "sender", "subject" };
             }); */
 
-            return "success";
+            return result.DisplayName.ToString();
         }
     }
 }
